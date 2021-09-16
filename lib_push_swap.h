@@ -14,5 +14,10 @@
 // }				t_list;
 
 int ft_check_arg(int argc,char **argv);
+void	ft_put_error(void);
+int	ft_check_max_value(char *tmp_arg);
+int	ft_check_double(char **tmp_arg);
+
+
 
 #endif

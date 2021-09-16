@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-HEAD = push_swap.h
+HEAD = lib_push_swap.h
 
 SRC =	push_swap.c ft_check_arg.c
 

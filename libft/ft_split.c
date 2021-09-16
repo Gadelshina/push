@@ -1,4 +1,4 @@
-#include "libft.h"
+ #include "libft.h"
 
 unsigned int	ft_nb_words(char const *s, char c)
 {
