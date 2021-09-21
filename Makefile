@@ -1,25 +1,31 @@
-NAME = push_swap.a
+NAME = push_swap
 
-HEAD = lib_push_swap.h
+SRCS = ft_split.c utils.c \
+		push_swap.c ft_check_arg.c get_list.c get_free.c \
+		
 
-SRC =	push_swap.c ft_check_arg.c
+CC = gcc
 
-OBJ = $(SRC:.c=.o)
+FLAGS = -Wall -Werror -Wextra
 
-FLAGS = -Wall -Wextra -Werror
+HEADER = push_swap.h
 
-%.o :	%.c $(HEAD)
-		gcc $(FLAGS) -c $< -o $@ 
-all:	$(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(NAME):	$(OBJ)
-		ar rcs $(NAME) $(OBJ)
-clean:
-		rm -f $(OBJ)
+%.o : %.c $(HEADER)
+		$(CC) $(FLAGS) -c $< -o $@
 
-fclean: clean
-		rm -f $(NAME)
+all : $(NAME)
 
-re:		fclean all
+$(NAME): $(OBJS)
+		$(CC) $(FLAGS) -o $(NAME) $(OBJS)
 
-PHONY : all clean fclean re 
+clean :
+		rm -rf $(OBJS)
+
+fclean : clean
+		rm -rf $(NAME)
+
+re : fclean all
+
+.PHONY: all clean fclean re
