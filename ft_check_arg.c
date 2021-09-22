@@ -67,7 +67,7 @@ int	ft_check_max_value(char *tmp_arg)
 	return(0);
 }
 
-void	ft_check_arg(int argc, char **argv, t_list *stack_a)	
+void	ft_check_arg(int argc, char **argv, t_list **stack_a)	
 {
 	int	i;
 	int	j;
@@ -83,9 +83,11 @@ void	ft_check_arg(int argc, char **argv, t_list *stack_a)
 		while(tmp_arg[j])
 		{
 			ft_check_max_value(tmp_arg[j]);
-			ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(tmp_arg[j])));
+			ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(tmp_arg[j])));
 			j++;
 		}
 	}	
-	ft_check_double(stack_a);
+	ft_check_double(*stack_a);
+	ft_lstindex(stack_a);
+
 }

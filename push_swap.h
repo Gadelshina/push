@@ -25,10 +25,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int content);
 int	ft_lstsize(t_list *lst);
+void	ft_lstindex(t_list **stack_a);
 
 
 void    ft_free_arr(char **arr);
-void	ft_check_arg(int argc, char **argv, t_list *stack_a);
+void	ft_check_arg(int argc, char **argv, t_list **stack_a);
 void	ft_put_error(int var);
 int		ft_check_max_value(char *tmp_arg);
 void	ft_check_double(t_list *stack_a);
