@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = ft_split.c utils.c \
+SRCS = ft_split.c utils.c ft_put_error.c\
 		push_swap.c ft_check_arg.c get_list.c get_free.c \
 		
 

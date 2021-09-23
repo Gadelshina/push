@@ -7,11 +7,7 @@ int	ft_push_swap(int argc, char **argv)
 	stack_a = NULL;
 	ft_check_arg(argc, argv, &stack_a);
 	// if (ft_lstsize(stack_a) < 4)
-	while(stack_a)
-	{
-		printf("%d\n", stack_a->index);
-		stack_a = stack_a->next;
-	}
+
 	return(0);
 }
 

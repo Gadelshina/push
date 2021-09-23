@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-void	ft_put_error(int var)
-{
-	if (var == 1)
-		ft_putstr_fd("Please, enter numbers\n", 2);
-	else
-		ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
-}
-
 void	ft_check_double(t_list *stack_a)
 {
 	t_list *tmp_next;
@@ -87,7 +78,23 @@ void	ft_check_arg(int argc, char **argv, t_list **stack_a)
 			j++;
 		}
 	}	
+	if (ft_lstsize(*stack_a) == 1)
+		exit (EXIT_FAILURE);
 	ft_check_double(*stack_a);
+	ft_check_sorted(*stack_a);
 	ft_lstindex(stack_a);
+}
 
+void	ft_check_sorted(t_list *stack_a)
+{
+	t_list *next;
+
+	next = stack_a->next;
+	while (stack_a->content < next->content && next->next)
+	{
+		stack_a = stack_a->next;
+		next = next->next;
+	}
+	if (stack_a->content < next->content && next->next == NULL)
+		exit(EXIT_FAILURE);
 }

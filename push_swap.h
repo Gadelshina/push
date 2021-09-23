@@ -33,6 +33,8 @@ void	ft_check_arg(int argc, char **argv, t_list **stack_a);
 void	ft_put_error(int var);
 int		ft_check_max_value(char *tmp_arg);
 void	ft_check_double(t_list *stack_a);
+void	ft_check_sorted(t_list *stack_a);
+
 
 
 

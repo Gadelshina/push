@@ -54,11 +54,9 @@ void	ft_lstindex(t_list **stack_a)
 	t_list *tmp;
 	t_list *small;
 	int		index;
-	int		lst_size;
 
-	lst_size = ft_lstsize(*stack_a);
 	index = 1;
-	while (index < lst_size)
+	while (index <= ft_lstsize(*stack_a))
 	{
 		small = *stack_a;
 		while (small->index != 0)
@@ -66,15 +64,11 @@ void	ft_lstindex(t_list **stack_a)
 		tmp = *stack_a;
 		while (tmp)
 		{
-			if (small->content > tmp->content && tmp->index == 0)
+			if (tmp->content < small->content && tmp->index == 0)
 				small = tmp;
 			tmp = tmp->next;
 		}
 		small->index = index;
 		index++;
 	}
-	small = *stack_a;
-	while(small->index != 0)
-		small = small->next;
-	small->index = index;
 }
