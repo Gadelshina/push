@@ -35,6 +35,12 @@ int		ft_check_max_value(char *tmp_arg);
 void	ft_check_double(t_list *stack_a);
 void	ft_check_sorted(t_list *stack_a);
 
+void	ss_operation(t_list **lst);
+void	pp_operation(t_list **donor, t_list **recipient);
+void	rr_operation(t_list **lst);
+void	reverserr_operation(t_list **lst);
+
+
 
 
 
