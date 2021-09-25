@@ -8,15 +8,16 @@ int	ft_push_swap(int argc, char **argv)
 	stack_b = NULL;
 	stack_a = NULL;
 	ft_check_arg(argc, argv, &stack_a);
+	preparation_sort();
 	// if (ft_lstsize(stack_a) < 4)
-	pp_operation(&stack_a, &stack_b);
-	while(stack_a->next)
-	{
-		printf("%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
-	printf("%d\n", stack_a->content);
-	printf("stack_b\n%d\n", stack_b->content);
+
+	// while(stack_a->next)
+	// {
+	// 	printf("%d\n", stack_a->content);
+	// 	stack_a = stack_a->next;
+	// }
+	// printf("%d\n", stack_a->content);
+	// printf("stack_b\n%d\n", stack_b->content);
 
 	return(0);
 }

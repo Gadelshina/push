@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ss_operation(t_list **lst)
+void	operation_ss(t_list **lst)
 {
 	t_list	*tmp;
 
@@ -10,7 +10,7 @@ void	ss_operation(t_list **lst)
 	*lst = tmp;
 }
 
-void	pp_operation(t_list **donor, t_list **recipient)
+void	operation_pp(t_list **donor, t_list **recipient)
 {
 	t_list	*tmp;
 	
@@ -23,7 +23,7 @@ void	pp_operation(t_list **donor, t_list **recipient)
 	ft_lstadd_front(recipient, tmp);
 }
 
-void	rr_operation(t_list **lst)
+void	operation_rr(t_list **lst)
 {
 	t_list	*back;
 
@@ -33,7 +33,7 @@ void	rr_operation(t_list **lst)
 	ft_lstadd_back(lst, back);
 }
 
-void	reverserr_operation(t_list **lst)
+void	operation_reverserr(t_list **lst)
 {
 	t_list	*top;
 	t_list	*tmp;
