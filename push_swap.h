@@ -11,8 +11,17 @@ typedef struct s_list
 	int				content;
 	int				index;
 	struct s_list	*next;
-}	t_list;
+}				t_list;
 
+typedef struct	s_oper
+{
+	int	len_stack;
+	int	position;
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+}				t_oper;
 
 int		ft_atoi(const char *str);
 int		ft_isdigit (int c);
