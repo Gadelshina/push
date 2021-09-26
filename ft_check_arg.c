@@ -1,6 +1,20 @@
 #include "push_swap.h"
 
-void	ft_check_double(t_list *stack_a)
+static void	ft_check_sorted(t_list *stack_a)
+{
+	t_list *next;
+
+	next = stack_a->next;
+	while (stack_a->content < next->content && next->next)
+	{
+		stack_a = stack_a->next;
+		next = next->next;
+	}
+	if (stack_a->content < next->content && next->next == NULL)
+		exit(EXIT_FAILURE);
+}
+
+static void	ft_check_double(t_list *stack_a)
 {
 	t_list *tmp_next;
 
@@ -20,14 +34,14 @@ void	ft_check_double(t_list *stack_a)
 	}
 }
 
-int check_minus(char minus)
+static int check_minus(char minus)
 {
 	if (minus == '-')
 		return(1);
 	return(0);
 }
 
-int	ft_check_max_value(char *tmp_arg)
+static int	ft_check_max_value(char *tmp_arg)
 {
 	int		i;
 	int		len;
@@ -66,6 +80,8 @@ void	ft_check_arg(int argc, char **argv, t_list **stack_a)
 
 	if (argc < 2)
 		ft_put_error(1);
+	if (argv[1][0] == '\0')
+		ft_put_error(0);
 	i = 1;
 	while (i < argc)
 	{
@@ -74,8 +90,7 @@ void	ft_check_arg(int argc, char **argv, t_list **stack_a)
 		while(tmp_arg[j])
 		{
 			ft_check_max_value(tmp_arg[j]);
-			ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(tmp_arg[j])));
-			j++;
+			ft_lstadd_back(stack_a, ft_lstnew(ft_atoi(tmp_arg[j++])));
 		}
 	}	
 	if (ft_lstsize(*stack_a) == 1)
@@ -83,18 +98,4 @@ void	ft_check_arg(int argc, char **argv, t_list **stack_a)
 	ft_check_double(*stack_a);
 	ft_check_sorted(*stack_a);
 	ft_lstindex(stack_a);
-}
-
-void	ft_check_sorted(t_list *stack_a)
-{
-	t_list *next;
-
-	next = stack_a->next;
-	while (stack_a->content < next->content && next->next)
-	{
-		stack_a = stack_a->next;
-		next = next->next;
-	}
-	if (stack_a->content < next->content && next->next == NULL)
-		exit(EXIT_FAILURE);
 }

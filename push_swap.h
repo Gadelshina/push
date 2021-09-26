@@ -31,14 +31,14 @@ void	ft_lstindex(t_list **stack_a);
 void    ft_free_arr(char **arr);
 void	ft_check_arg(int argc, char **argv, t_list **stack_a);
 void	ft_put_error(int var);
-int		ft_check_max_value(char *tmp_arg);
-void	ft_check_double(t_list *stack_a);
-void	ft_check_sorted(t_list *stack_a);
 
 void	operation_ss(t_list **lst);
 void	operation_pp(t_list **donor, t_list **recipient);
 void	operation_rr(t_list **lst);
 void	operation_reverserr(t_list **lst);
+
+void    presorting(t_list **stack_a, t_list **stack_b);
+
 
 
 

@@ -8,7 +8,8 @@ int	ft_push_swap(int argc, char **argv)
 	stack_b = NULL;
 	stack_a = NULL;
 	ft_check_arg(argc, argv, &stack_a);
-	preparation_sort();
+	presorting(&stack_a, &stack_b);
+	
 	// if (ft_lstsize(stack_a) < 4)
 
 	// while(stack_a->next)

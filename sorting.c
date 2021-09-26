@@ -1,57 +1,56 @@
 #include "push_swap.h"
 
-void sort_two(t_list **stack_a)
+static void	sort_two(t_list **stack_a)
 {
 	operation_ss(stack_a);
 	ft_putstr_fd("sa\n", 1);
 	exit(0);
 }
 
-void    sort_three(t_list **stack_a)
+static void	sort_three_extra(t_list **stack, t_list *o, t_list *t, t_list *f)
+{
+	if (o->index > t->index && t->index < f->index && o->index > f->index)
+	{
+		operation_rr(stack);
+		ft_putstr_fd("ra\n", 1);
+	}
+	else if (o->index < t->index && t->index > f->index && o->index < f->index)
+	{
+		operation_ss(stack);
+		ft_putstr_fd("sa\n", 1);
+		operation_rr(stack);
+		ft_putstr_fd("ra\n", 1);
+	}
+	else if (o->index < t->index && t->index > f->index && o->index > f->index)
+	{
+		operation_reverserr(stack);
+		ft_putstr_fd("rra\n", 1);
+	}
+
+}
+static void	sort_three(t_list **stack)
 {
 	t_list	*o;
 	t_list	*t;
 	t_list	*f;
 
-	o = *stack_a;
+	o = *stack;
 	t = o->next;
-	free = t->next;
-	if (o->index > to->index && to->index < free->index && o->index < free->index)
+	f = t->next;
+	if (o->index > t->index && t->index < f->index && o->index < f->index)
 	{
-		operation_ss(stack_a);
+		operation_ss(stack);
 		ft_putstr_fd("sa\n", 1);
 	}
 	else if (o->index > t->index && t->index > f->index && o->index > f->index)
 	{
-		operation_ss(stack_a);
+		operation_ss(stack);
 		ft_putstr_fd("sa\n", 1);
-		operation_reverserr(stack_a);
+		operation_reverserr(stack);
 		ft_putstr_fd("rra\n", 1);
 	}
 	else
-		sort_three_extra(stack_a, &o, &t, &f);
-}
-
-void	sort_three_extra(t_list **stack_a, t_list **o, t_list **t, t_list **f)
-{
-	if (o->index > t->index && t->index < f->index && o->index > f->index)
-	{
-		operation_rr(stack_a);
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if (o->index < t->index && t->index > f->index && o->index < f->index)
-	{
-		operation_ss(stack_a);
-		ft_putstr_fd("sa\n", 1);
-		operation_rr(stack_a);
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if (o->index < t->index && t->index > f->index && o->index > f->index)
-	{
-		operation_reverserr(stack_a);
-		ft_putstr_fd("rra\n", 1);
-	}
-
+		sort_three_extra(stack, o, t, f);
 }
 
 void    presorting(t_list **stack_a, t_list **stack_b)
@@ -60,10 +59,10 @@ void    presorting(t_list **stack_a, t_list **stack_b)
 
 	original_size = ft_lstsize(*stack_a);
 	if (original_size == 2)
-		sort_to(stack_a);
+		sort_two(stack_a);
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		if (stack_a->index > original_size - 3)
+		if ((*stack_a)->index > original_size - 3)
 		{
 			operation_rr(stack_a);
 			ft_putstr_fd("ra\n", 1);
