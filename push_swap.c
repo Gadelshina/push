@@ -4,11 +4,14 @@ int	ft_push_swap(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_oper	*oper;
 
 	stack_b = NULL;
 	stack_a = NULL;
 	ft_check_arg(argc, argv, &stack_a);
 	presorting(&stack_a, &stack_b);
+	while (stack_b)
+		sorting(&stack_a, &stack_b, &oper);
 	
 	// if (ft_lstsize(stack_a) < 4)
 
