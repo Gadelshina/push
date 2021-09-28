@@ -15,13 +15,18 @@ void    sorting(t_list **stack_a, t_list **stack_b, t_oper **oper)
     int  operation_min;
     int     operation;
     t_list  *tmp;
-    t_list  min_num;
+    t_list  *min_num;
 
     tmp = *stack_b;
     operation_min = -1;
     while (tmp)
     {
-        
+        if (operation_min == -1 || operation < operation_min)
+        {
+            operation_min = operation;
+            min_num = tmp;
+        }
+        tmp = tmp->next;
     }
 
 }
