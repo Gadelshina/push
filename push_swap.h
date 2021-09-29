@@ -16,10 +16,10 @@ typedef struct s_list
 typedef struct	s_oper
 {
 	int	len_stack;
-	int	position;
+	int	loc;
 	int	ra;
-	int	rb;
 	int	rra;
+	int	rb;
 	int	rrb;
 }				t_oper;
 
