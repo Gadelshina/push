@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void    location_init(t_oper *oper)
+void    init_location(t_oper *oper)
 {
 	oper->len_stack = 0;
 	oper->loc = 0;
@@ -10,7 +10,7 @@ void    location_init(t_oper *oper)
 	oper->rrb = 0;
 }
 
-int	location_search(t_list *lst, int index)
+int	search_location(t_list *lst, int index)
 {
 	int	loc;
 
@@ -25,8 +25,33 @@ int	location_search(t_list *lst, int index)
 	return(0);
 }
 
-int	direction_search()
+int	search_direction(int index, t_list *lst)
 {
+	int	direct;
+	int	current;
+	int	next;
+	int	min_index;
+	t_list *tmp;
+
+	tmp = lst->next;
+	current = lst->index;
+	next = tmp->index;
+	min_index = search_min_index;
+	if (min_index > index)
+		return (search_location(min_index, lst))
+	direct = 2;
+	while (1)
+	{
+		if (currrent < index && index < next)
+			return (direct);
+		current = tmp->index;
+		if (!tmp->next)
+			tmp = lst;
+		else
+			tmp = tmp->next;
+		next = tmp->index;
+		direct++;
+	}
 	
 }
 
@@ -35,15 +60,15 @@ t_oper **oper, int index)
 {
 	location_init(oper);
 	oper->len_stack = ft_lstsize(stack_b);
-	oper->loc = location_search_b(stack_b, index);
+	oper->loc = location_search(stack_b, index);
 	if (oper->len_stack / 2 >= oper->loc)
 		oper->ra = oper->loc - 1;
 	else if (oper->len_stack > 1)
 		oper->rra = oper->len_stack - oper->loc + 1;	
 	oper->len_stack = ft_lstsize(stack_a);
-	oper->loc = location_search_a();
+	oper->loc = direction_search(index, stack_a);
 
-	return ();
+	return (oper->ra + oper->rra + oper->rb + oper->rrb);
 
 }
 
@@ -58,7 +83,7 @@ void    sorting(t_list **stack_a, t_list **stack_b, t_oper **oper)
 	operation_min = -1;
 	while (tmp)
 	{
-		operation = operation_count(*stack_a, *stack_b, oper, tmp->idex);
+		operation = operation_count(*stack_a, *stack_b, oper, tmp->index);
 		if (operation_min == -1 || operation < operation_min)
 		{
 			operation_min = operation;
@@ -66,6 +91,7 @@ void    sorting(t_list **stack_a, t_list **stack_b, t_oper **oper)
 		}
 		tmp = tmp->next;
 	}
+	operation_min = operation_count(*stack_a, *stack_b, &oper, index)
 
 }
 
