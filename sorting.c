@@ -10,6 +10,20 @@ void    init_location(t_oper *oper)
 	oper->rrb = 0;
 }
 
+int	search_min_index(t_list *lst)
+{
+	int	index;
+
+	index = lst->index;
+	while (lst)
+	{
+		if (lst->index < index)
+			index = lst->index;
+		lst = lst->next;
+	}
+	return (index);
+}
+
 int	search_location(t_list *lst, int index)
 {
 	int	loc;
@@ -36,13 +50,13 @@ int	search_direction(int index, t_list *lst)
 	tmp = lst->next;
 	current = lst->index;
 	next = tmp->index;
-	min_index = search_min_index;
+	min_index = search_min_index(lst);
 	if (min_index > index)
-		return (search_location(min_index, lst))
+		return (search_location(lst, min_index));
 	direct = 2;
 	while (1)
 	{
-		if (currrent < index && index < next)
+		if (current < index && index < next)
 			return (direct);
 		current = tmp->index;
 		if (!tmp->next)
@@ -52,11 +66,10 @@ int	search_direction(int index, t_list *lst)
 		next = tmp->index;
 		direct++;
 	}
-	
 }
 
 int	operation_count(t_list *stack_a, t_list *stack_b, \
-t_oper **oper, int index)
+t_oper *oper, int index)
 {
 	init_location(oper);
 	oper->len_stack = ft_lstsize(stack_b);
@@ -75,7 +88,7 @@ t_oper **oper, int index)
 
 }
 
-void    sorting(t_list **stack_a, t_list **stack_b, t_oper **oper)
+void    sorting(t_list **stack_a, t_list **stack_b, t_oper *oper)
 {
 	int  operation_min;
 	int     operation;
@@ -94,24 +107,6 @@ void    sorting(t_list **stack_a, t_list **stack_b, t_oper **oper)
 		}
 		tmp = tmp->next;
 	}
-	operation_min = operation_count(*stack_a, *stack_b, &oper, index);
+	operation_count(*stack_a, *stack_b, oper, transfer->index);
 	change_stack(stack_a, stack_b, oper);
-
-
-}
-
-
-
-int	search_min_index(t_list *lst)
-{
-	int	index;
-
-	index = lst->index;
-	while (lst)
-	{
-		if (lst->index < index)
-			index = lst->index;
-		lst = lst->next;
-	}
-	return (index);
 }
