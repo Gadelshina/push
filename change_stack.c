@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void    change_stack_extra(t_list **stack_a, t_list **stack_b, t_oper *oper)
+static void    change_stack_extra(t_list **stack_a, t_list **stack_b, t_oper *oper)
 {
 	if (oper->ra)
 	{
@@ -11,7 +11,7 @@ void    change_stack_extra(t_list **stack_a, t_list **stack_b, t_oper *oper)
 	if (oper->rra)
 	{
 		ft_putstr_fd("rra\n", 1);
-		operation_rr(stack_a);
+		operation_reverserr(stack_a);
 		oper->rra--;
 	}
 	if (oper->rb)
@@ -23,7 +23,7 @@ void    change_stack_extra(t_list **stack_a, t_list **stack_b, t_oper *oper)
 	if (oper->rrb)
 	{
 		ft_putstr_fd("rrb\n", 1);
-		operation_rr(stack_b);
+		operation_reverserr(stack_b);
 		oper->rrb--;
 	}
 }

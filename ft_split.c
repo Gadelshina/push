@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+static size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
-unsigned int	ft_nb_words(char const *s, char c)
+static unsigned int	ft_nb_words(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	nb_strs;
@@ -46,7 +46,7 @@ unsigned int	ft_nb_words(char const *s, char c)
 	return (nb_strs);
 }
 
-void	ft_get_str(char **str, unsigned int *str_len, char c)
+static void	ft_get_str(char **str, unsigned int *str_len, char c)
 {
 	unsigned int	i;
 
